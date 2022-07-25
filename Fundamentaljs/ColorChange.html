@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Change color</button>
+
+    <!-- script code here -->
+    <script>
+      const btn = document.querySelector("button");
+      function random(number) {
+        return Math.floor(Math.random() * (number + 1));
+      }
+      btn.addEventListener("click", () => {
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        document.body.style.backgroundColor = rndCol;
+      });
+
+      // or
+    //   const btn = document.querySelector("button");
+
+    //   function random(number) {
+    //     return Math.floor(Math.random() * (number + 1));
+    //   }
+
+    //   function bgChange(e) {
+    //     const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+    //     e.target.style.backgroundColor = rndCol;
+    //     console.log(e);
+    //   }
+
+    //   btn.addEventListener("click", bgChange);
+    </script>
+  </body>
+</html>

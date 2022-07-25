@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    select {
+        padding: 10px;
+        text-align: center;
+        font-size: x-large;
+        margin: 100px 420px;
+    }
+
+    select:focus {
+        font-size: x-large;
+    }
+</style>
+
+<body class="output">
+    <select name="" id="select">
+        <option value="select">---select---</option>
+        <option value="black">black</option>
+        <option value="white">white</option>
+        <option value="purple">purple</option>
+        <option value="yellow">yellow</option>
+        <option value="psychedelic">psychedelic</option>
+    </select>
+    <script>
+        const select = document.querySelector('select');
+        const html = document.querySelector('.output');
+
+        select.addEventListener('change', () => {
+            const choice = select.value;
+
+            switch (choice) {
+                case 'black':
+                    update('black', 'white');
+                    break;
+                case 'white':
+                    update('white', 'black');
+                    break;
+                case 'purple':
+                    update('purple', 'white');
+                    break;
+                case 'yellow':
+                    update('yellow', 'darkgray');
+                    break;
+                case 'psychedelic':
+                    update('lime', 'purple');
+                    break;
+                default:
+                    update(null);
+                    break;
+            }
+        });
+
+        function update(bgColor, textColor) {
+            html.style.backgroundColor = bgColor;
+            html.style.color = textColor;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 480px;
+        height: 380px;
+        border-radius: 10px;
+        background-color: #eee;
+        background-image: linear-gradient(
+          to bottom,
+          rbga(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.1)
+        );
+      }
+
+      .hidden {
+        left: -50%;
+      }
+
+      .showing {
+        left: 50%;
+      }
+
+      div video {
+        display: block;
+        width: 400px;
+        margin: 40px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Display video</button>
+
+    <div class="hidden">
+      <video>
+        <source
+          src="https://raw.githubusercontent.com/mdn/learning-area/master/javascript/building-blocks/events/rabbit320.mp4"
+          type="video/mp4"
+        />
+        <source
+          src="https://raw.githubusercontent.com/mdn/learning-area/master/javascript/building-blocks/events/rabbit320.webm"
+          type="video/mp4"
+        />
+        <p>
+          Your browser doesn't support HTML5 video. Here is a
+          <a href="rabbit320.mp4">link to the video</a> instead.
+        </p>
+      </video>
+    </div>
+
+    <!-- script code here -->
+    <script>
+      const btn = document.querySelector("button");
+      const videoBox = document.querySelector("div");
+
+      function displayVideo() {
+        if (videoBox.getAttribute("class") === "hidden") {
+          videoBox.setAttribute("class", "showing");
+        }
+      }
+
+      btn.addEventListener("click", displayVideo);
+      videoBox.addEventListener("click", () =>
+        videoBox.setAttribute("class", "hidden")
+      );
+
+      const video = document.querySelector("video");
+
+      video.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.play();
+      });
+    </script>
+  </body>
+</html>
