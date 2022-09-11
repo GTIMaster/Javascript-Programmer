@@ -1,0 +1,48 @@
+<!-- // Asynchronous programming is a technique that 
+// enables your program to start a potentially
+// long running task and still be able to be 
+// responsive to other events while that task 
+// runs, rather than having to wait unit that 
+// task has finished. Once that task has finished
+// your program is presented with the result. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="xhr">Click to start request</button>
+    <button id="reload">Reload</button>
+
+    <pre class="event-log" readonly></pre>
+    <script>
+      const log = document.querySelector(".event-log");
+
+      document.querySelector("#xhr").addEventListener("click", () => {
+        log.textContent = "";
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("loadend", () => {
+          log.textContent = `${log.textContent}Finished with status: ${xhr.status}`;
+        });
+
+        xhr.open(
+          "GET",
+          "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json"
+        );
+        xhr.send();
+        log.textContent = `${log.textContent}Started XHR request\n`;
+      });
+
+      document.querySelector("#reload").addEventListener("click", () => {
+        log.textContent = "";
+        document.location.reload();
+      });
+    </script>
+  </body>
+</html>

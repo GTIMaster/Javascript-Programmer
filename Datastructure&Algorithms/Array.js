@@ -27,4 +27,13 @@ const arr = [
     [4,5,6],
     [7,8,9]
 ]
+console.log(arr)
+
+//=> Array are useful when we have to store
+// individual values and add/delete values from
+// the end of the data structure.
+
+//=> But when we need to add/ delete form any 
+// part of it, there are other data structure 
+// that perform more efficiently.
 
